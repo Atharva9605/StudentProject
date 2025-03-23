@@ -1,6 +1,7 @@
 # StudentProject
 
 Hello , I am Atharva Tembhurnikar
+
 This is  Django project with `home` and `contact` apps, which i had made for a client containerized with Docker and automated via Jenkins CI/CD.
 You have the follwing steps to implement the project
 
