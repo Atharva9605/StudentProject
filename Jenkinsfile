@@ -1,45 +1,34 @@
 pipeline {
     agent any
-
+    environment {
+        DOCKERHUB_CREDS = credentials('dockerhub-credentials')
+    }
     stages {
-        stage('Clean Workspace') {
-            steps {
-                cleanWs() // Ensures a fresh start
-            }
-        }
-
         stage('Clone Repository') {
             steps {
-                script {
-                    git branch: 'main', url: 'https://github.com/Atharva9605/StudentProject.git'
-                }
+                git url: 'https://github.com/Atharva9605/StudentProject.git', branch: 'main'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t atharvanand24/studentproject:latest .'
             }
         }
-
         stage('Push to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'docker-hub-password', variable: 'DOCKER_PASS')]) {
-                    sh '''
-                        echo "$DOCKER_PASS" | docker login -u atharvanand24 --password-stdin
-                        docker push atharvanand24/studentproject:latest
-                    '''
-                }
+                sh '''
+                    echo "$DOCKERHUB_CREDS_PSW" | docker login -u "$DOCKERHUB_CREDS_USR" --password-stdin
+                    docker push atharvanand24/studentproject:latest
+                '''
             }
         }
     }
-
     post {
         success {
-            echo '✅ Pipeline completed successfully!'
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo '❌ Pipeline failed. Check logs for details.'
+            echo 'Pipeline failed.'
         }
     }
 }
