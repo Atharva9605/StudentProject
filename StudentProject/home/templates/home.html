@@ -1,0 +1,252 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header class="header">
+        <section class="flex">
+            <a href="home.html" class="logo">SPD Digital</a>
+            <form action="search.html" method="post" class="search-form">
+                <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+                <button type="submit" class="fas fa-search"></button>
+            </form>
+            <div class="icons">
+                <i class="fa-solid fa-bars"></i> <!-- Menu Icon -->
+                <i class="fa-solid fa-magnifying-glass"></i> <!-- Search Icon -->
+                <i class="fa-solid fa-user"></i> <!-- User Icon -->
+                <i class="fa-solid fa-sun"></i> <!-- Sun Icon for Light/Dark Mode -->
+            </div>
+            <div class="profile">
+                <img src="{% static 'images/pic-1.jpg' %}" class="image" alt="">
+                <h3 class="name">Atharva Tembhurnikar</h3>
+                <p class="role">student</p>
+                <a href="profile.html" class="btn">View Profile</a>
+                <div class="flex-btn">
+                    <a href="login.html" class="option-btn">Login</a>
+                    <a href="register.html" class="option-btn">Register</a>
+                </div>
+            </div>
+        </section>
+    </header>   
+    
+    <div class="side-bar">
+        <div id="close-btn">
+            <i class="fa-solid fa-times"></i> <!-- Close Sidebar Icon -->
+        </div>
+        <div class="profile">
+            <img src="{% static 'images/pic-1.jpg' %}" class="image" alt="">
+            <h3 class="name">Atharva Tembhurnikar</h3>
+            <p class="role">student</p>
+            <a href="profile.html" class="btn">View Profile</a>
+        </div>
+        <nav class="navbar">
+            <a href="home.html"><i class="fa-solid fa-home"></i><span>Home</span></a>
+            <a href="about.html"><i class="fa-solid fa-question"></i><span>About</span></a>
+            <a href="courses.html"><i class="fa-solid fa-graduation-cap"></i><span>Courses</span></a>
+            <a href="teachers.html"><i class="fa-solid fa-chalkboard-user"></i><span>Teachers</span></a>
+            <a href="contact.html"><i class="fa-solid fa-headset"></i><span>Contact Us</span></a>
+        </nav>
+    </div>
+
+    <section class="home-grid">
+        <h1 class="heading">quick options</h1>
+        <div class="box-container">
+            <div class="box">
+                <h3 class="title">Likes and Comments</h3>
+                <p class="likes">total likes : <span>25</span></p>
+                <a href="#" class="inline-btn">view likes</a>
+                <p class="likes">total comments : <span>12</span></p>
+                <a href="#" class="inline-btn">view comments</a>
+                <p class="likes">saved playlists : <span>4</span></p>
+                <a href="#" class="inline-btn">View Playlists</a>
+            </div>
+            <div class="box">
+                <h3 class="title">Top Courses</h3>
+                <div class="flex">
+                    <a href="#"><i class="fas fa-code"></i><span>Engineering Mathematics</span></a>
+                    <a href="#"><i class="fas fa-chart-simple"></i><span>Bsc</span></a>
+                    <a href="#"><i class="fas fa-pen"></i><span>Physics</span></a>
+                    <a href="#"><i class="fas fa-chart-line"></i><span>Chemistry</span></a>
+                    <a href="#"><i class="fas fa-music"></i><span>Biology</span></a>
+                    <a href="#"><i class="fas fa-camera"></i><span>JEE(Mains+Advanced)</span></a>
+                    <a href="#"><i class="fas fa-cog"></i><span>Class 11 Maths</span></a>
+                    <a href="#"><i class="fas fa-vial"></i><span>MHT = CET Courses</span></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3 class="title">popular topics</h3>
+                <div class="flex">
+                    <a href="#"><i class="fas fa-times"></i><span>Algebra</span></a>
+                    <a href="#"><i class="fas fa-equals"></i><span>Geometry</span></a>
+                    <a href="#"><i class="fas fa-greater-than"></i><span>Calculus</span></a>
+                    <a href="#"><i class="fas fa-calculator"></i><span>Statistics and Probability</span></a>
+                    <a href="#"><i class="fas fa-percentage"></i><span>Number Theory</span></a>
+                    <a href="#"><i class="fas fa-infinity"></i><span>Discrete Mathematics</span></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3 class="title">Join SPD</h3>
+                <p class="tutor">We're hiring math tutors for our online classes! If you're passionate about teaching math, apply now!</p>
+                <a href="teachers.html" class="inline-btn">Get started</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses">
+        <h1 class="heading">Our Courses</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>18-08-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-1.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Unit 1 : Complex Numbers</h3>
+                <a href="playlist.html" class="inline-btn">View Playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" width="50" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>08-08-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-2.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Unit 2 : Matrices</h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>21-08-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-3.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Unit 3 : Theory of Equations</h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>21-09-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-4.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Unit 4 : Elementary Number Theory</h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-3.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Soham Deshpande</h3>
+                        <span>21-08-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-5.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Bioinformatics : II Sem</h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>21-09-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-6.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Mathematics 1 : Crash Course </h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>21-09-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-7.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Integral Calculus 1 : Libnitz Therom</h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>21-10-2022</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-8.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Integral Calculus 2 : Multivariable </h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+            <div class="box">
+                <div class="tutor">
+                    <img src="{% static 'images/pic-2.jpg' %}" alt="">
+                    <div class="info">
+                        <h3>Pravin Deshpande</h3>
+                        <span>23-10-2024</span>
+                    </div>
+                </div>
+                <div class="thumb">
+                    <img src="{% static 'images/thumb-9.png' %}" alt="">
+                    <span>10 videos</span>
+                </div>
+                <h3 class="title">Differential Calculus Full Course </h3>
+                <a href="playlist.html" class="inline-btn">view playlist</a>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        &copy; copyright @ 2024 by <span>SPD Digital</span> | all rights reserved!
+    </footer>
+    
+    <!-- custom js file link -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
