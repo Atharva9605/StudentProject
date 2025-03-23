@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_CREDS = credentials('dockerhub-credentials')
+    }
     stages {
         stage('Clone Repository') {
             steps {
@@ -8,17 +11,13 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                script {
-                    sh 'docker build -t atharvanand24/studentproject:latest .'
-                }
+                sh 'docker build -t atharvanand24/studentproject:latest .'
             }
         }
         stage('Push to Docker Hub') {
             steps {
-                script {
-                    sh 'echo $DOCKERHUB_PASSWORD | docker login -u atharvanand24 --password-stdin'
-                    sh 'docker push atharvanand24/studentproject:latest'
-                }
+                sh 'echo $Atharvanand@1 | docker login -u $DOCKERHUB_CREDS_USR --password-stdin'
+                sh 'docker push atharvanand24/studentproject:latest'
             }
         }
     }
