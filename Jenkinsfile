@@ -2,12 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage('Clean Workspace') {
-            steps {
-                deleteDir() // Ensures a fresh workspace
-            }
-        }
-
         stage('Clone Repository') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
@@ -36,10 +30,10 @@ pipeline {
 
     post {
         success {
-            echo ' Pipeline completed successfully!'
+            echo 'Pipeline completed successfully!'
         }
         failure {
-            echo ' Pipeline failed. Check logs for details.'
+            echo 'Pipeline failed. Check logs for details.'
         }
     }
 }
