@@ -2,11 +2,17 @@ pipeline {
     agent any
 
     stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs() // Ensures a fresh start
+            }
+        }
+
         stage('Clone Repository') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/main']],
-                    userRemoteConfigs: [[url: 'https://github.com/Atharva9605/StudentProject.git']]
-                ])
+                script {
+                    git branch: 'main', url: 'https://github.com/Atharva9605/StudentProject.git'
+                }
             }
         }
 
@@ -30,10 +36,10 @@ pipeline {
 
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed. Check logs for details.'
+            echo '❌ Pipeline failed. Check logs for details.'
         }
     }
 }
