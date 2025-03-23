@@ -8,24 +8,32 @@ pipeline {
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t atharvanand24/studentproject:latest .'
+                sh '''
+                    docker build -t atharvanand24/studentproject:latest .
+                '''
+            }
+        }
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                    sh '''
+                        echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+                    '''
+                }
             }
         }
         stage('Push to Docker Hub') {
             steps {
-                sh '''
-                    echo "Atharvanand@1" | docker login -u atharvanand24 --password-stdin
-                    docker push atharvanand24/studentproject:latest
-                '''
+                sh 'docker push atharvanand24/studentproject:latest'
             }
         }
     }
     post {
         success {
-            echo 'Pipeline completed successfully!'
+            echo '✅ Pipeline completed successfully!'
         }
         failure {
-            echo 'Pipeline failed.'
+            echo '❌ Pipeline failed.'
         }
     }
 }
