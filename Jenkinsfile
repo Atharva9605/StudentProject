@@ -1,12 +1,9 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_CREDS = credentials('dockerhub-credentials')
-    }
     stages {
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/Atharva9605/StudentProject.git', branch: 'main'
+                git 'https://github.com/Atharva9605/StudentProject.git'
             }
         }
         stage('Build Docker Image') {
@@ -14,12 +11,16 @@ pipeline {
                 sh 'docker build -t atharvanand24/studentproject:latest .'
             }
         }
-        stage('Push to Docker Hub') {
+        stage('Login to Docker Hub') {
             steps {
-                sh '''
-                    echo "$DOCKERHUB_CREDS_PSW" | docker login -u "$DOCKERHUB_CREDS_USR" --password-stdin
-                    docker push atharvanand24/studentproject:latest
-                '''
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                    sh 'echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin'
+                }
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                sh 'docker push atharvanand24/studentproject:latest'
             }
         }
     }
